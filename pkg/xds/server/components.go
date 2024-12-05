@@ -43,7 +43,9 @@ var (
 )
 
 func RegisterXDS(rt core_runtime.Runtime) error {
+	// 注册监控指标callback
 	statsCallbacks, err := util_xds.NewStatsCallbacks(nil, "xds")
+	// 注册CLA（EDS）
 	claCache, err := cla.NewCache(rt.Config().Store.Cache.ExpirationTime.Duration)
 	if err != nil {
 		return err
